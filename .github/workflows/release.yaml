@@ -33,7 +33,7 @@ jobs:
           echo "## What's Changed in ${CURRENTTAG}" > diff-changelog.txt
           if [ -z "$PRETAG" ]
           then
-            cat CHANGELOG.md | grep -E '^\+' | grep -v '+++' | sed -e 's/^\+//g' | sed -e 's/##\s[0-9.]*\s.*//g' | sed -e '/^$/d' >> diff-changelog.txt
+            cat CHANGELOG.md | sed -e 's/#\sChangelog.*//g' | sed -e 's/##\s[0-9.]*\s.*//g' | sed -e '/^$/d' >> diff-changelog.txt
           else
             git diff $PRETAG..${{ github.sha }} -- CHANGELOG.md | grep -E '^\+' | grep -v '+++' | sed -e 's/^\+//g' | sed -e 's/##\s[0-9.]*\s.*//g' | sed -e '/^$/d' >> diff-changelog.txt
             echo "" >> diff-changelog.txt
