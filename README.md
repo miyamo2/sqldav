@@ -1,2 +1,3 @@
 # sqldav
-Implementation of  `database/sql/driver.Valuer` to convert slice | map to DynamoDB AttributeValue.
+
+map | slice 🔄 "sql.Scanner"/"driver.Valuer" 🔄 DynamoDB AttributeValue. (And its Tooltip).
