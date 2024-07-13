@@ -15,10 +15,11 @@ on:
       - "main"
   schedule:
     - "0 0 * * 0" # Run every Sunday at 00:00
-  workflow_call:
-    inputs: {}
   workflow_dispatch:
-    inputs: {}
+    inputs:
+      input:
+        required: false
+        type: string
 
 permissions: write-all
 
