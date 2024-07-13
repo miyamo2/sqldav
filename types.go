@@ -60,16 +60,16 @@ func (s *Set[T]) Scan(value interface{}) error {
 	return nil
 }
 
-func (s *Set[T]) Value() (v driver.Value, err error) {
+func (s Set[T]) Value() (v driver.Value, err error) {
 	switch s := (interface{})(s).(type) {
-	case *Set[int]:
-		v, err = numericSetToAttributeValue(*s)
-	case *Set[float64]:
-		v, err = numericSetToAttributeValue(*s)
-	case *Set[string]:
-		v, err = stringSetToAttributeValue(*s)
-	case *Set[[]byte]:
-		v, err = binarySetToAttributeValue(*s)
+	case Set[int]:
+		v, err = numericSetToAttributeValue(s)
+	case Set[float64]:
+		v, err = numericSetToAttributeValue(s)
+	case Set[string]:
+		v, err = stringSetToAttributeValue(s)
+	case Set[[]byte]:
+		v, err = binarySetToAttributeValue(s)
 	}
 	return
 }
@@ -230,11 +230,11 @@ func (l *List) Scan(value interface{}) error {
 // Value implements the [driver.Valuer] interface.
 //
 // [driver.Valuer]: https://pkg.go.dev/gorm.io/gorm#Valuer
-func (l *List) Value() (v driver.Value, err error) {
-	if err = resolveCollectionsNestedInList(l); err != nil {
+func (l List) Value() (v driver.Value, err error) {
+	if err = resolveCollectionsNestedInList(&l); err != nil {
 		return
 	}
-	v, err = ToDocumentAttributeValue[*types.AttributeValueMemberL](*l)
+	v, err = ToDocumentAttributeValue[*types.AttributeValueMemberL](l)
 	return
 }
 
@@ -322,11 +322,11 @@ func (m *Map) Scan(value interface{}) error {
 // Value implements the [driver.Valuer] interface.
 //
 // [driver.Valuer]: https://pkg.go.dev/gorm.io/gorm#Valuer
-func (m *Map) Value() (v driver.Value, err error) {
-	if err = resolveCollectionsNestedInMap(m); err != nil {
+func (m Map) Value() (v driver.Value, err error) {
+	if err = resolveCollectionsNestedInMap(&m); err != nil {
 		return
 	}
-	v, err = ToDocumentAttributeValue[*types.AttributeValueMemberM](*m)
+	v, err = ToDocumentAttributeValue[*types.AttributeValueMemberM](m)
 	return
 }
 
@@ -428,9 +428,9 @@ func (l *TypedList[T]) Scan(value interface{}) error {
 // Value implements the [driver.Valuer] interface.
 //
 // [driver.Valuer]: https://pkg.go.dev/gorm.io/gorm#Valuer
-func (l *TypedList[T]) Value() (v driver.Value, err error) {
-	avl := &types.AttributeValueMemberL{Value: make([]types.AttributeValue, 0, len(*l))}
-	for _, v := range *l {
+func (l TypedList[T]) Value() (v driver.Value, err error) {
+	avl := &types.AttributeValueMemberL{Value: make([]types.AttributeValue, 0, len(l))}
+	for _, v := range l {
 		av, err := ToDocumentAttributeValue[*types.AttributeValueMemberM](v)
 		if err != nil {
 			return nil, err
