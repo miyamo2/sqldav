@@ -1,5 +1,14 @@
 # Changelog
 
+## 0.1.1 - 2024-07-13
+
+### Bug Fix🐛
+
+#### `driver.Valuer` implementations
+
+Receiver is now a physical value instead of a pointer.
+This ensures that type switches and type assertions work properly.
+
 ## 0.1.0 - 2024-07-13
 
 ### Initial Release🎉
