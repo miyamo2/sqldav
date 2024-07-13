@@ -13,7 +13,6 @@ on:
   pull_request:
     branches:
       - "main"
-  workflow_call:
   schedule:
     - "0 0 * * 0" # Run every Sunday at 00:00
   workflow_dispatch:
