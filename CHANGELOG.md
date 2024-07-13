@@ -1,5 +1,11 @@
 # Changelog
 
+## 0.2.0 - 2024-07-13
+
+### ✨ New Features
+
+- `Set`, `List`, `Map` and `TypedList` now implements `gorm.io/gorm.schema.GormDataTypeInterface`.
+
 ## 0.1.1 - 2024-07-13
 
 ### Bug Fix🐛
