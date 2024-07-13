@@ -74,6 +74,22 @@ func (s Set[T]) Value() (v driver.Value, err error) {
 	return
 }
 
+// GormDataType returns the data type for Gorm.
+func (s *Set[T]) GormDataType() string {
+	var t T
+	switch (interface{})(t).(type) {
+	case string:
+		return "SS"
+	case int:
+		return "NS"
+	case float64:
+		return "NS"
+	case []byte:
+		return "BS"
+	}
+	return "SS"
+}
+
 func numericSetToAttributeValue[T Set[int] | Set[float64]](s T) (*types.AttributeValueMemberNS, error) {
 	return ToDocumentAttributeValue[*types.AttributeValueMemberNS](s)
 }
@@ -238,6 +254,11 @@ func (l List) Value() (v driver.Value, err error) {
 	return
 }
 
+// GormDataType returns the data type for Gorm.
+func (l *List) GormDataType() string {
+	return "L"
+}
+
 // resolveCollectionsNestedInList resolves nested collection type attribute.
 func resolveCollectionsNestedInList(l *List) error {
 	for i, v := range *l {
@@ -328,6 +349,11 @@ func (m Map) Value() (v driver.Value, err error) {
 	}
 	v, err = ToDocumentAttributeValue[*types.AttributeValueMemberM](m)
 	return
+}
+
+// GormDataType returns the data type for Gorm.
+func (m Map) GormDataType() string {
+	return "M"
 }
 
 // resolveCollectionsNestedInMap resolves nested document type attribute.
@@ -439,4 +465,9 @@ func (l TypedList[T]) Value() (v driver.Value, err error) {
 	}
 	v = avl
 	return
+}
+
+// GormDataType returns the data type for Gorm.
+func (l *TypedList[T]) GormDataType() string {
+	return "L"
 }
