@@ -1,5 +1,13 @@
 # Changelog
 
+## 0.2.1 - 2024-10-06
+
+### ⬆️ Upgrading dependencies
+
+-  `github.com/aws/aws-sdk-go-v2` from 1.30.4 to 1.31.0
+-  `github.com/aws/aws-sdk-go-v2/service/dynamodb` from v1.34.3 to v1.36.0
+-  `github.com/aws/aws-sdk-go-v2/feature/dynamodb/attributevalue` from v1.14.9 to v1.15.10
+
 ## 0.2.0 - 2024-07-13
 
 ### ✨ New Features
