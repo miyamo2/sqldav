@@ -1,5 +1,5 @@
-github.com/aws/aws-sdk-go-v2 v1.32.7 h1:ky5o35oENWi0JYWUZkB7WYvVPP+bcRF5/Iq7JWSb5Rw=
-github.com/aws/aws-sdk-go-v2 v1.32.7/go.mod h1:P5WJBrYqqbWVaOxgH0X/FYYD47/nooaPOZPlQdmiN2U=
+github.com/aws/aws-sdk-go-v2 v1.32.8 h1:cZV+NUS/eGxKXMtmyhtYPJ7Z4YLoI/V8bkTdRZfYhGo=
+github.com/aws/aws-sdk-go-v2 v1.32.8/go.mod h1:P5WJBrYqqbWVaOxgH0X/FYYD47/nooaPOZPlQdmiN2U=
 github.com/aws/aws-sdk-go-v2/feature/dynamodb/attributevalue v1.15.15 h1:2HXPu4MCUKVA/hU0g2DWtYgXjVPsj7Ujd+xif/Yl2fc=
 github.com/aws/aws-sdk-go-v2/feature/dynamodb/attributevalue v1.15.15/go.mod h1:fqQI+CG2FX4yVDJORf6QAKLRw16yO+JcB6io1iubcm0=
 github.com/aws/aws-sdk-go-v2/service/dynamodb v1.36.5 h1:VWun/99wjelZZ+d0DGeSrffiCBJhC481geypGc6rfn0=
